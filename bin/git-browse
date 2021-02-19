@@ -2,7 +2,8 @@
 
 if [[ $1 == "" ]]
 then
-    remote=$(git remote | head -n 1)
+    branch=$(git rev-parse --abbrev-ref HEAD 2&> /dev/null)
+    remote=$(git config branch."${branch}".remote || echo "origin")
 else
     remote=$1
 fi
@@ -22,7 +23,7 @@ fi
 
 if [[ $remote_url = git@* ]]
 then
-    url=$(echo $remote_url | sed -E -e 's/:/\//' -e 's/\.git$//' -e 's/\w*@(.*)/http:\/\/\1/')
+    url=$(echo $remote_url | sed -E -e 's/:/\//' -e 's/\.git$//' -e 's/.*@(.*)/http:\/\/\1/')
 elif [[ $remote_url = http* ]]
 then
     url=${remote_url%.git}

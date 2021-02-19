@@ -11,6 +11,9 @@ Those dependencies are listed below:
 
 ## Installing with a package manager
 
+Note that only Homebrew package is maintained by the git-extras developers directly.
+Other packages are maintained by the distribution's packagers or third-party volunteers.
+
 ### Debian
 
 ```bash
@@ -99,6 +102,12 @@ install.cmd "C:\git"
 Last, to use `git summary` and `git ignore-io`, you need to copy
 `column.exe` from a [msys2][1] installation from `folder-your-msys2-installed/usr/bin`
 to `folder-your-git-installed/usr/bin` or wait for git 2.7.1, which will include column.exe.
+
+### FreeBSD
+
+```bash
+$ pkg install git-extras
+```
 
 ### BSD
 

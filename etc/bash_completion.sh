@@ -1,9 +1,5 @@
 # bash completion support for git-extras.
 
-_git_bug(){
-  __git_extras_workflow "bug"
-}
-
 _git_changelog(){
   local s_opts=( '-a' '-l' '-t' '-f' '-s' '-n' '-p' '-x' '-h' '?' )
   local l_opts=(
@@ -23,10 +19,6 @@ _git_changelog(){
   merged_opts_str+="$(printf "%s " "${l_opts[@]}")"
 
   __gitcomp "$merged_opts_str"
-}
-
-_git_chore(){
-  __git_extras_workflow "chore"
 }
 
 _git_authors(){
@@ -131,10 +123,6 @@ _git_reauthor(){
    __gitcomp "${comp}"
 }
 
-_git_refactor(){
-  __git_extras_workflow "refactor"
-}
-
 _git_scp(){
   __git_complete_remote_or_refspec
 }
@@ -153,6 +141,10 @@ _git_squash(){
 
 _git_undo(){
    __gitcomp "--hard --soft -h -s"
+}
+
+_git_info(){
+  __gitcomp "--color -c --no-config"
 }
 
 _git_browse(){

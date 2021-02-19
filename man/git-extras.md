@@ -19,18 +19,21 @@ git-extras(1) -- Awesome GIT utilities
 
   Self update.
 
+## ENVIRONMENT AND CONFIGURATION VARIABLES
+
+  `git config --add git-extras.default-branch $BRANCH`
+
+  Change the default branch to `$BRANCH` (defaut to `master`).
+
 ## COMMANDS
 
    - **git-alias(1)** Define, search and show aliases
    - **git-archive-file(1)** Export the current HEAD of the git repository to an archive
    - **git-authors(1)** Generate authors report
-   - **git-back(1)** Undo and Stage latest commits
    - **git-browse(1)** <View the web page for the current repository>
    - **git-brv(1)** List branches sorted by their last commit date
-   - **git-bug(1)** Create bug branch
    - **git-bulk(1)** Run git commands on multiple repositories
    - **git-changelog(1)** Generate a changelog report
-   - **git-chore(1)** Create chore branch
    - **git-clear-soft(1)** Soft clean up a repository
    - **git-clear(1)** Rigorously clean up a repository
    - **git-coauthor(1)** Add a co-author to the last commit
@@ -69,7 +72,6 @@ git-extras(1) -- Awesome GIT utilities
    - **git-pull-request(1)** Create pull request for GitHub project
    - **git-reauthor(1)** Rewrite history to change author's identity
    - **git-rebase-patch(1)** Rebases a patch
-   - **git-refactor(1)** Create refactor branch
    - **git-release(1)** Commit, tag and push changes to the repository
    - **git-rename-branch(1)** rename local branch and push to remote
    - **git-rename-remote(1)** Rename a remote
@@ -83,7 +85,7 @@ git-extras(1) -- Awesome GIT utilities
    - **git-show-merged-branches(1)** Show merged branches
    - **git-show-tree(1)** show branch tree of commit history
    - **git-show-unmerged-branches(1)** Show unmerged branches
-   - **git-squash(1)** Import changes from a branch
+   - **git-squash(1)** squash N last changes up to a ref'ed commit
    - **git-stamp(1)** Stamp the last commit message
    - **git-standup(1)** Recall the commit history
    - **git-summary(1)** Show repository summary
@@ -91,6 +93,7 @@ git-extras(1) -- Awesome GIT utilities
    - **git-touch(1)** Touch and add file to the index
    - **git-undo(1)** Remove latest commits
    - **git-unlock(1)** Unlock a file excluded from version control
+   - **git-utimes(1)** Change files modification time to their last commit date
 
 ## AUTHOR
 
