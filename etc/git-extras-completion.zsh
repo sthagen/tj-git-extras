@@ -158,6 +158,11 @@ _git-delete-branch() {
         ':branch-name:__gitex_branch_names'
 }
 
+_git-delete-squashed-branches() {
+    _arguments \
+        ':branch-name:__gitex_branch_names'    
+}
+
 
 _git-delete-submodule() {
     _arguments \
@@ -330,6 +335,7 @@ zstyle -g existing_user_commands ':completion:*:*:git:*' user-commands
 
 zstyle ':completion:*:*:git:*' user-commands $existing_user_commands \
     alias:'define, search and show aliases' \
+    abort:'abort current merge, rebase, or cherry-pick process' \
     archive-file:'export the current head of the git repository to an archive' \
     authors:'generate authors report' \
     browse:'open repo website in browser' \
@@ -347,6 +353,7 @@ zstyle ':completion:*:*:git:*' user-commands $existing_user_commands \
     create-branch:'create branches' \
     delete-branch:'delete branches' \
     delete-merged-branches:'delete merged branches' \
+    delete-squashed-branches:'delete squashed branches' \
     delete-submodule:'delete submodules' \
     delete-tag:'delete tags' \
     delta:'lists changed files' \

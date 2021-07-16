@@ -27,6 +27,7 @@ git-extras(1) -- Awesome GIT utilities
 
 ## COMMANDS
 
+   - **git-abort(1)** Abort current git operation
    - **git-alias(1)** Define, search and show aliases
    - **git-archive-file(1)** Export the current HEAD of the git repository to an archive
    - **git-authors(1)** Generate authors report
@@ -44,6 +45,7 @@ git-extras(1) -- Awesome GIT utilities
    - **git-create-branch(1)** Create branches
    - **git-delete-branch(1)** Delete branches
    - **git-delete-merged-branches(1)** Delete merged branches
+   - **git-delete-squashed-branches(1)** Delete branches that were squashed
    - **git-delete-submodule(1)** Delete submodules
    - **git-delete-tag(1)** Delete tags
    - **git-delta(1)** Lists changed files

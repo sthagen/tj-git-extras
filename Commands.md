@@ -1,4 +1,5 @@
 
+ - [`git abort`](#git-abort)
  - [`git alias`](#git-alias)
  - [`git archive-file`](#git-archive-file)
  - [`git authors`](#git-authors)
@@ -16,12 +17,13 @@
  - [`git create-branch`](#git-create-branch)
  - [`git delete-branch`](#git-delete-branch)
  - [`git delete-merged-branches`](#git-delete-merged-branches)
+ - [`git delete-squashed-branches`](#git-delete-squashed-branches)
  - [`git delete-submodule`](#git-delete-submodule)
  - [`git delete-tag`](#git-delete-tag)
  - [`git delta`](#git-delta)
  - [`git effort`](#git-effort)
  - [`git extras`](#git-extras)
- - [`git feature`](#git-featurerefactorbugchore)
+ - [`git feature`](#git-feature)
  - [`git force-clone`](#git-force-clone)
  - [`git fork`](#git-fork)
  - [`git fresh-branch`](#git-fresh-branch)
@@ -94,9 +96,9 @@ $ git extras update
 
 Sets up the `gh-pages` branch.  (See [GitHub Pages](https://pages.github.com/) documentation.)
 
-## git feature|refactor|bug|chore
+## git feature
 
-Create/Merge the given feature, refactor, bug or chore branch `name`:
+Create/Merge the given feature branch `name`:
 
 ```bash
 $ git feature dependencies
@@ -124,8 +126,6 @@ $ git feature finish dependencies
 ```
 
 _Note_: If a remote is setup to track the branch, it will be deleted.
-
-All of this works with `feature`, `bug`, `chore` or `refactor`.
 
 ## git contrib
 
@@ -223,8 +223,6 @@ project  : git-extras
 node (master): git effort --above 15 {src,lib}/*
 ```
 
-  ![git effort](http://f.cl.ly/items/0b0w0S2K1d100e2T1a0D/Screen%20Shot%202012-02-08%20at%206.43.34%20PM.png)
-
   If you wish to ignore files with commits `<=` a value you may use `--above`:
 
 ```
@@ -265,7 +263,7 @@ usage: git bulk [-g] ([-a]|[-w <ws-name>]) <git command>
 ```bash
 $ git bulk --addworkspace personal ~/workspaces/personal
 ```
-  With option `--from` the URL to a single repository or a file containing multiple URLs can be added and they will be cloned diretly into the workspace. Suitable for the initial setup of a multi-repo project.
+  With option `--from` the URL to a single repository or a file containing multiple URLs can be added and they will be cloned directly into the workspace. Suitable for the initial setup of a multi-repo project.
 
 ```bash
 $ git bulk --addworkspace projectX ~/workspaces/projectx --from https://github.com/x/project-x.git
@@ -851,6 +849,17 @@ Deleted feature/themes (was c029ab3).
 Deleted feature/live_preview (was a81b002).
 Deleted feature/dashboard (was 923befa).
 ...
+```
+
+## git delete-squashed-branches
+
+Deletes branches that have been "squashed-merged" into a specified branch; this branch will be checked out as a side-effect. If no branch is specified, then it will default to the current checked out branch.
+
+```bash
+$ (feature-branch) git delete-squashed-branches main
+Deleted branch dependabot/bundler/kramdown-2.3.1 (was 1d3fb00).
+Deleted branch dependabot/bundler/rexml-3.2.5 (was a7e4052).
+$ (main) git ...
 ```
 
 ## git fresh-branch
@@ -1531,3 +1540,7 @@ total 308
 -rwxr-xr-x 1 vt vt 18561 Sep  5  2019 git-changelog
 -rwxr-xr-x 1 vt vt   215 Nov 19  2016 git-clear
 ```
+
+## git abort
+
+Abort current rebase, merge or cherry-pick, without the need to find exact command in history.

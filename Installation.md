@@ -11,7 +11,7 @@ Those dependencies are listed below:
 
 ## Installing with a package manager
 
-Note that only Homebrew package is maintained by the git-extras developers directly.
+Note that only the Homebrew package is maintained by the git-extras developers directly.
 Other packages are maintained by the distribution's packagers or third-party volunteers.
 
 ### Debian
@@ -27,11 +27,11 @@ $ sudo $apt_pref install git-extras
 $ sudo dnf install git-extras
 ```
 
-### OpenSUSE
+### openSUSE
 
-Substitute your OpenSUSE version in the command below (in this case we are considering OpenSUSE 15.1):
+Substitute your openSUSE version in the command below (in this case we are considering openSUSE Leap 15.2):
 ```bash
-$ sudo zypper ar https://download.opensuse.org/repositories/devel:/tools:/scm/openSUSE_Leap_15.1/devel:tools:scm.repo
+$ sudo zypper ar https://download.opensuse.org/repositories/devel:/tools:/scm/openSUSE_Leap_15.2/devel:tools:scm.repo
 ```
 
 and install it:
@@ -63,7 +63,7 @@ $ nix-env -i git-extras
 [Abdullah](https://github.com/AWAN) has written a [Pkgfile](https://abdullah.today/ports/git-extras/Pkgfile) for his beloved [distro](https://crux.nu).
 
 
-### Mac OS X with Homebrew
+### Homebrew
 
 ```bash
 $ brew install git-extras
@@ -158,14 +158,18 @@ curl -sSL https://git.io/git-extras-setup | sudo bash /dev/stdin
 
 ## Installing as Zsh plugin
 
-[Zplugin](https://github.com/zdharma/zplugin) can install git-extras by using:
-
+[ZInit](https://github.com/zdharma/zinit) can install git-extras by using:
 ```zsh
-zplugin ice as"program" pick"$ZPFX/bin/git-*" src"etc/git-extras-completion.zsh" make"PREFIX=$ZPFX"
-zplugin light tj/git-extras
+zinit ice as"program" pick"$ZPFX/bin/git-*" src"etc/git-extras-completion.zsh" make"PREFIX=$ZPFX"
+zinit light tj/git-extras
+
+# or with the for syntax + async load
+zinit lucid wait'0a' for \
+as"program" pick"$ZPFX/bin/git-*" src"etc/git-extras-completion.zsh" make"PREFIX=$ZPFX" tj/git-extras
+
 ```
 
-`$ZPFX` is `~/.zplugin/polaris` by default. Use `zplugin update tj/git-extras` to update.
+`$ZPFX` is `~/.zinit/polaris` by default. Use `zinit update tj/git-extras` to update.
 This method installs in `$HOME`, so you don't need to ask administrator to install package.
 
 ## Updating
