@@ -114,6 +114,12 @@ _git-changelog() {
         '(-l --list)'{-l,--list}'[list commits]' \
 }
 
+_git-clear() {
+    _arguments \
+        '(-f --force)'{-f,--force}'[force clear]' \
+        '(-h --help)'{-h,--help}'[help message]' \
+}
+
 _git-coauthor() {
     _arguments \
         ':co-author[co-author to add]' \
@@ -160,7 +166,7 @@ _git-delete-branch() {
 
 _git-delete-squashed-branches() {
     _arguments \
-        ':branch-name:__gitex_branch_names'    
+        ':branch-name:__gitex_branch_names'
 }
 
 
@@ -291,6 +297,7 @@ _git-release() {
         '-s[Create a signed and annotated tag.]' \
         '-u[Create a tag, annotated and signed with the given key.]' \
         '--semver[If the latest tag in your repo matches the semver format requirement, you could increase part of it as the new release tag.]' \
+        '--prefix[Add a prefix string to semver to allow more complex tags.]' \
         '--no-empty-commit[Avoid creating empty commit if nothing could be committed.]' \
         '--[The arguments listed after "--" separator will be passed to pre/post-release hook.]'
 }
@@ -322,6 +329,7 @@ _git-standup() {
 _git-summary() {
     _arguments '--line[summarize with lines rather than commits]'
     _arguments '--dedup-by-email[remove duplicate users by the email address]'
+    _arguments '--no-merges[exclude merge commits]'
     __gitex_commits
 }
 
@@ -339,6 +347,7 @@ zstyle ':completion:*:*:git:*' user-commands $existing_user_commands \
     archive-file:'export the current head of the git repository to an archive' \
     authors:'generate authors report' \
     browse:'open repo website in browser' \
+    browse-ci:'open repo CI page in browser' \
     bug:'create bug branch' \
     bulk:'run bulk commands' \
     brv:'list branches sorted by their last commit date'\
@@ -372,6 +381,7 @@ zstyle ':completion:*:*:git:*' user-commands $existing_user_commands \
     local-commits:'list local commits' \
     lock:'lock a file excluded from version control' \
     locked:'ls files that have been locked' \
+    magic:'commits everything with a generated message' \
     merge-into:'merge one branch into another' \
     merge-repo:'merge two repo histories' \
     missing:'show commits missing from another branch' \

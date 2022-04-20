@@ -4,6 +4,7 @@ set __fish_git_extras_commands \
     "archive-file:Export the current HEAD of the git repository to an archive" \
     "authors:Generate authors report" \
     "browse:View the web page for the current repository" \
+    "browse-ci:View the CI page for the current repository" \
     "brv:List branches sorted by their last commit date" \
     "bulk:Run git commands on multiple repositories" \
     "changelog:Generate a changelog report" \
@@ -170,6 +171,7 @@ complete -c git -x -n '__fish_git_using_command standup' -s n -d 'Limit the numb
 # summary
 complete -c git    -n '__fish_git_using_command summary' -l line -d 'summarize with lines rather than commits'
 complete -c git    -n '__fish_git_using_command summary' -l dedup-by-email -d 'remove duplicate users by the email address'
+complete -c git    -n '__fish_git_using_command summary' -l no-merges -d 'exclude merge commits'
 # release
 complete -c git -x -n '__fish_git_using_command release' -s c -d 'Generates/populates the changelog with all commit message since the last tag'
 complete -c git -x -n '__fish_git_using_command release' -s r -d 'The "remote" repository that is destination of a push operation'

@@ -12,7 +12,7 @@ function show_contents {
 }
 
 function global_ignore() {
-    git config --global core.excludesile || \
+    git config --global core.excludesFile || \
         ([ -n "$XDG_CONFIG_HOME"  ] && echo "$XDG_CONFIG_HOME/git/ignore") || \
         echo "$HOME/.config/git/ignore"
 }
@@ -57,6 +57,14 @@ function add_private {
 function add_patterns {
   echo "Adding pattern(s) to: $1"
   local file="${1/#~/$HOME}"
+  dir_name=$(dirname "$file")
+  if [ ! -d "$dir_name" ]; then
+      mkdir -p "$dir_name"
+  fi
+  if [ -s "$file" ]; then
+      # If the content of $file doesn't end with a newline, add one
+      test "$(tail -c 1 "$file")" != "" && echo "" >> "$file"
+  fi
   for pattern in "${@:2}"; do
     echo "... adding '$pattern'"
     (test -f "$file" && test "$pattern" && grep -q -F -x -- "$pattern" "$file") || echo "$pattern" >> "$file"

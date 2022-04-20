@@ -23,7 +23,7 @@ git-extras(1) -- Awesome GIT utilities
 
   `git config --add git-extras.default-branch $BRANCH`
 
-  Change the default branch to `$BRANCH` (defaut to `master`).
+  Change the default branch to `$BRANCH`. If `git-extras.default-branch` isn't set, `init.defaultBranch` is used instead. If none of them are set it defaults to `main`.
 
 ## COMMANDS
 
@@ -31,6 +31,7 @@ git-extras(1) -- Awesome GIT utilities
    - **git-alias(1)** Define, search and show aliases
    - **git-archive-file(1)** Export the current HEAD of the git repository to an archive
    - **git-authors(1)** Generate authors report
+   - **git-browse-ci(1)** <View the web page for the current repository>
    - **git-browse(1)** <View the web page for the current repository>
    - **git-brv(1)** List branches sorted by their last commit date
    - **git-bulk(1)** Run git commands on multiple repositories
@@ -63,6 +64,7 @@ git-extras(1) -- Awesome GIT utilities
    - **git-local-commits(1)** List local commits
    - **git-lock(1)** Lock a file excluded from version control
    - **git-locked(1)** ls files that have been locked
+   - **git-magic(1)** Automate add/commit/push routines
    - **git-merge-into(1)** Merge one branch into another
    - **git-merge-repo(1)** Merge two repo histories
    - **git-missing(1)** Show commits missing from another branch
