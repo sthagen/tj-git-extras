@@ -127,12 +127,12 @@ function allowedargcount () {
 function executBulkOp () {
   checkGitCommand
   if ! $allwsmode && ! $singlemode; then wsnameToCurrent; fi # by default git bulk works within the 'current' workspace
-  listall | while read workspacespec; do
+  listall | while read -r workspacespec; do
     parseWsName "$workspacespec"
     if [[ -n $wsname ]] && [[ $rwsname != "$wsname" ]]; then continue; fi
     eval cd "\"$rwsdir\""
     local actual=$(pwd)
-    [ "${quiet?}" != "false" ] && echo 1>&2 "Executing bulk operation in workspace ${inverse}$actual${reset}"
+    [ "${quiet?}" != "true" ] && echo 1>&2 "Executing bulk operation in workspace ${inverse}$actual${reset}"
 
     allGitFolders=( $(eval find -L . -name ".git") )
 
@@ -141,7 +141,7 @@ function executBulkOp () {
       eval cd "\"$gitrepodir\"" # into git repo location
       local curdir=$(pwd)
       local leadingpath=${curdir#${actual}}
-      [ "${quiet?}" != "false" ] && echo 1>&2 "Current repository: ${leadingpath%/*}/${bldred}${curdir##*/}${reset}"
+      [ "${quiet?}" != "true" ] && echo 1>&2 "Current repository: ${leadingpath%/*}/${bldred}${curdir##*/}${reset}"
       guardedExecution "$@"
       eval cd "\"$rwsdir\"" # back to origin location of last find command
     done
