@@ -5,10 +5,15 @@ SHELL := bash
 OS = $(shell uname)
 ifeq ($(OS), FreeBSD)
 	MANPREFIX ?= "$(PREFIX)/man/man1"
+	ifeq ($(MANPREFIX), /usr/local)
+		MANPREFIX = "/usr/local/man/man1"
+	endif
 else
 	MANPREFIX ?= "$(PREFIX)/share/man/man1"
 endif
 ifeq ($(OS), Darwin)
+	COMPL_DIR ?= "$(DESTDIR)$(SYSCONFDIR)/bash_completion.d"
+else ifeq ($(OS), FreeBSD)
 	COMPL_DIR ?= "$(DESTDIR)$(SYSCONFDIR)/bash_completion.d"
 else
 	COMPL_DIR ?= "$(DESTDIR)$(SYSCONFDIR)/bash-completion/completions"
